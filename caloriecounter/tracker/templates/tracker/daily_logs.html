@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Food Logs for {{ date }}</h2>
+
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Food Name</th>
+                <th>Quantity</th>
+                <th>Meal Type</th>
+                <th>Calories</th>
+                <th>Protein (g)</th>
+                <th>Carbohydrates (g)</th>
+                <th>Fats (g)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.food_item.name }}</td>
+                <td>{{ log.quantity }}</td>
+                <td>{{ log.meal_type.name }}</td>
+                <td>{{ log.food_item.calories * log.quantity }}</td>
+                <td>{{ log.food_item.protein * log.quantity }}</td>
+                <td>{{ log.food_item.total_carbohydrates * log.quantity }}</td>
+                <td>{{ log.food_item.total_fats * log.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if not logs %}
+        <p class="text-center mt-4">No logs available for this date.</p>
+    {% endif %}
+</div>
+{% endblock %}

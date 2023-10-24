@@ -1,0 +1,103 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <h2>Edit Profile</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="accordion mt-4" id="editProfileAccordion">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingPersonal">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePersonal">
+                        Personal Profile
+                    </button>
+                </h2>
+                <div id="collapsePersonal" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+
+    <form method="post" enctype="multipart/form-data" class="shadow p-4 rounded">
+        {% csrf_token %}
+
+        <div class="card mt-4 border-primary">
+            <div class="card-header bg-primary text-white">
+                Personal Profile
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">{{ userprofile_form.profile_picture.label }}</label>
+                    <div class="d-flex align-items-center">
+                        {% if userprofile.profile_picture %}
+                            <img src="{{ userprofile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle" width="100">
+                            <div class="ms-3">
+                        {% endif %}
+                        <input type="file" class="form-control" name="{{ userprofile_form.profile_picture.name }}">
+                        {% if userprofile.profile_picture %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ userprofile_form.bio.label }}</label>
+                    <textarea class="form-control" name="{{ userprofile_form.bio.name }}">{{ userprofile_form.bio.value }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ userprofile_form.target_daily_calories.label }}</label>
+                    <input type="text" class="form-control" name="{{ userprofile_form.target_daily_calories.name }}" value="{{ userprofile_form.target_daily_calories.value }}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ userprofile_form.target_protein.label }}</label>
+                    <input type="text" class="form-control" name="{{ userprofile_form.target_protein.name }}" value="{{ userprofile_form.target_protein.value }}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ userprofile_form.target_carbs.label }}</label>
+                    <input type="text" class="form-control" name="{{ userprofile_form.target_carbs.name }}" value="{{ userprofile_form.target_carbs.value }}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ userprofile_form.target_fat.label }}</label>
+                    <input type="text" class="form-control" name="{{ userprofile_form.target_fat.name }}" value="{{ userprofile_form.target_fat.value }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4 border-secondary">
+            <div class="card-header bg-secondary text-white">
+                User Settings
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">{{ usersettings_form.dietary_preference.label }}</label>
+                    <select class="form-select" name="{{ usersettings_form.dietary_preference.name }}">
+                        <!-- You might need to loop through choices here -->
+                        {{ usersettings_form.dietary_preference }}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label d-block">{{ usersettings_form.send_email_notifications.label }}</label>
+                    <div class="form-check">
+                        {{ usersettings_form.send_email_notifications }}
+                        <label class="form-check-label" for="{{ usersettings_form.send_email_notifications.id_for_label }}"></label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ usersettings_form.theme_preference.label }}</label>
+                    <select class="form-select" name="{{ usersettings_form.theme_preference.name }}">
+                        <!-- You might need to loop through choices here -->
+                        {{ usersettings_form.theme_preference }}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">Update Profile</button>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

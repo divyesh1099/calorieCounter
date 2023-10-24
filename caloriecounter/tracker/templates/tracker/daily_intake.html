@@ -1,0 +1,87 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    {% if daily_intake %}
+    <h2>Daily Nutritional Intake for {{ daily_intake.date }}</h2>
+    <p>Details for {{ daily_intake.user.username }}</p>
+    
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nutrient</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total Calories</td>
+                <td>{{ daily_intake.total_calories }} kcal</td>
+            </tr>
+            <tr>
+                <td>Total Protein</td>
+                <td>{{ daily_intake.total_protein }} g</td>
+            </tr>
+            <tr>
+                <td>Total Carbohydrates</td>
+                <td>{{ daily_intake.total_carbs }} g</td>
+            </tr>
+            <tr>
+                <td>Total Fats</td>
+                <td>{{ daily_intake.total_fats }} g</td>
+            </tr>
+            <tr>
+                <td>Total Dietary Fiber</td>
+                <td>{{ daily_intake.total_dietary_fiber }} g</td>
+            </tr>
+            <tr>
+                <td>Total Sugars</td>
+                <td>{{ daily_intake.total_sugars }} g</td>
+            </tr>
+            <tr>
+                <td>Total Starch</td>
+                <td>{{ daily_intake.total_starch }} g</td>
+            </tr>
+            <tr>
+                <td>Total Saturated Fats</td>
+                <td>{{ daily_intake.total_saturated_fats }} g</td>
+            </tr>
+            <tr>
+                <td>Total Trans Fats</td>
+                <td>{{ daily_intake.total_trans_fats }} g</td>
+            </tr>
+            <tr>
+                <td>Total Monounsaturated Fats</td>
+                <td>{{ daily_intake.total_monounsaturated_fats }} g</td>
+            </tr>
+            <tr>
+                <td>Total Polyunsaturated Fats</td>
+                <td>{{ daily_intake.total_polyunsaturated_fats }} g</td>
+            </tr>
+            <tr>
+                <td>Total Cholesterol</td>
+                <td>{{ daily_intake.total_cholesterol }} mg</td>
+            </tr>
+            <tr>
+                <td>Total Sodium</td>
+                <td>{{ daily_intake.total_sodium }} mg</td>
+            </tr>
+            <tr>
+                <td>Total Potassium</td>
+                <td>{{ daily_intake.total_potassium }} mg</td>
+            </tr>
+            <tr>
+                <td>Total Vitamin C</td>
+                <td>{{ daily_intake.total_vitamin_c }} mg</td>
+            </tr>
+            <tr>
+                <td>Total Iron</td>
+                <td>{{ daily_intake.total_iron }} mg</td>
+            </tr>
+        </tbody>
+    </table>
+    {% else %}
+    <p>No intake record found for the selected date.</p>
+    {% endif %}
+</div>
+{% endblock %}

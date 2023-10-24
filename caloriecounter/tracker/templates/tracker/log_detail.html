@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Detailed Food Log for {{ date }}</h2>
+
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Food Name</th>
+                <th>Quantity</th>
+                <th>Meal Type</th>
+                <th>Calories</th>
+                <th>Protein (g)</th>
+                <th>Total Carbs (g)</th>
+                <th>Dietary Fiber (g)</th>
+                <th>Sugars (g)</th>
+                <th>Starch (g)</th>
+                <th>Total Fats (g)</th>
+                <th>Saturated Fats (g)</th>
+                <th>Trans Fats (g)</th>
+                <th>Monounsaturated Fats (g)</th>
+                <th>Polyunsaturated Fats (g)</th>
+                <th>Cholesterol (mg)</th>
+                <th>Sodium (mg)</th>
+                <th>Potassium (mg)</th>
+                <th>Vitamin C (mg)</th>
+                <th>Iron (mg)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.food_item.name }}</td>
+                <td>{{ log.quantity }}</td>
+                <td>{{ log.meal_type.name }}</td>
+                <td>{{ log.food_item.calories * log.quantity }}</td>
+                <td>{{ log.food_item.protein * log.quantity }}</td>
+                <td>{{ log.food_item.total_carbohydrates * log.quantity }}</td>
+                <td>{{ log.food_item.dietary_fiber * log.quantity }}</td>
+                <td>{{ log.food_item.sugars * log.quantity }}</td>
+                <td>{{ log.food_item.starch * log.quantity }}</td>
+                <td>{{ log.food_item.total_fats * log.quantity }}</td>
+                <td>{{ log.food_item.saturated_fats * log.quantity }}</td>
+                <td>{{ log.food_item.trans_fats * log.quantity }}</td>
+                <td>{{ log.food_item.monounsaturated_fats * log.quantity }}</td>
+                <td>{{ log.food_item.polyunsaturated_fats * log.quantity }}</td>
+                <td>{{ log.food_item.cholesterol * log.quantity }}</td>
+                <td>{{ log.food_item.sodium * log.quantity }}</td>
+                <td>{{ log.food_item.potassium * log.quantity }}</td>
+                <td>{{ log.food_item.vitamin_c * log.quantity }}</td>
+                <td>{{ log.food_item.iron * log.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if not logs %}
+        <p class="text-center mt-4">No logs available for this date.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "home/layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="img-thumbnail">
+        </div>
+        <div class="col-md-8">
+            <h3>{{ user.username }}'s Profile</h3>
+            <p><strong>Bio:</strong> {{ user.userprofile.bio }}</p>
+            <p><strong>Target Daily Calories:</strong> {{ user.userprofile.target_daily_calories }}</p>
+            <p><strong>Total Calories Consumed:</strong> {{ user.userprofile.total_calories_consumed }}</p>
+            <p><strong>Target Protein:</strong> {{ user.userprofile.target_protein }} grams</p>
+            <p><strong>Target Carbs:</strong> {{ user.userprofile.target_carbs }} grams</p>
+            <p><strong>Target Fat:</strong> {{ user.userprofile.target_fat }} grams</p>
+            <p><strong>Joined Date:</strong> {{ user.userprofile.joined_date }}</p>
+            <a href="{% url 'home:edit_profile' %}" class="btn btn-warning">Edit Profile</a>
+            <a href="{% url 'home:delete_profile' %}" class="btn btn-danger">Delete Profile</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- User Settings -->
+    <div>
+        <h4>Settings</h4>
+        <p><strong>Dietary Preference:</strong> {{ user.usersettings.dietary_preference }}</p>
+        <p><strong>Email Notifications:</strong> {{ user.usersettings.send_email_notifications|yesno:"Yes,No" }}</p>
+        <p><strong>Theme:</strong> {{ user.usersettings.theme_preference }}</p>
+    </div>
+
+    <hr>
+
+    <!-- User Statistics -->
+    <div>
+        <h4>Statistics</h4>
+        <p><strong>Highest Calories in a Day:</strong> {{ user.userstatistics.highest_calories_in_a_day }}</p>
+        <p><strong>Lowest Calories in a Day:</strong> {{ user.userstatistics.lowest_calories_in_a_day }}</p>
+        <p><strong>Average Daily Calories:</strong> {{ user.userstatistics.average_daily_calories }}</p>
+        <p><strong>Total Days Tracked:</strong> {{ user.userstatistics.total_days_tracked }}</p>
+        <p><strong>Average Daily Protein:</strong> {{ user.userstatistics.average_daily_protein }} grams</p>
+        <p><strong>Average Daily Carbs:</strong> {{ user.userstatistics.average_daily_carbs }} grams</p>
+        <p><strong>Average Daily Fat:</strong> {{ user.userstatistics.average_daily_fat }} grams</p>
+    </div>
+</div>
+{% endblock %}

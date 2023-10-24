@@ -1,0 +1,30 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{ food_item.name }}</h1>
+
+    {% if food_item.image %}
+    <img src="{{ food_item.image.url }}" alt="{{ food_item.name }}" class="img-fluid my-4">
+    {% else %}
+    <img src="{% static 'default_food_image.jpg' %}" alt="Default food image" class="img-fluid my-4">
+    {% endif %}
+
+    <h3>Description</h3>
+    <p>{{ food_item.description }}</p>
+
+    <h3>Nutritional Information</h3>
+    <table class="table table-bordered">
+        <tbody>
+            <tr><td>Calories</td><td>{{ food_item.calories }} kcal</td></tr>
+            <tr><td>Protein</td><td>{{ food_item.protein }} g</td></tr>
+            <tr><td>Total Carbohydrates</td><td>{{ food_item.total_carbohydrates }} g</td></tr>
+            <tr><td>Sugars</td><td>{{ food_item.sugars }} g</td></tr>
+            <tr><td>Dietary Fiber</td><td>{{ food_item.dietary_fiber }} g</td></tr>
+            <tr><td>Total Fats</td><td>{{ food_item.total_fats }} g</td></tr>
+            <!-- Add more rows for other nutrients as needed -->
+        </tbody>
+    </table>
+</div>
+{% endblock %}

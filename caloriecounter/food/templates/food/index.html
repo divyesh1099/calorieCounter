@@ -1,0 +1,34 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Food Items</h1>
+    
+    <div class="row">
+        {% for food in food_items %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if food.image %}
+                <img src="{{ food.image.url }}" class="card-img-top" alt="{{ food.name }}">
+                {% else %}
+                <img src="{% static 'default_food_image.png' %}" class="card-img-top" alt="Default food image">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ food.name }}</h5>
+                    <p class="card-text">{{ food.description|truncatewords:20 }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Calories: {{ food.calories }} kcal</li>
+                    <li class="list-group-item">Protein: {{ food.protein }} g</li>
+                    <li class="list-group-item">Carbs: {{ food.total_carbohydrates }} g</li>
+                    <li class="list-group-item">Fats: {{ food.total_fats }} g</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{% url 'food:food_detail' food.id %}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

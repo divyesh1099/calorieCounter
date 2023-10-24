@@ -1,0 +1,55 @@
+{% extends 'home/layout.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <h2>Food Tracker</h2>
+        <form action="{% url 'tracker:add_food_log' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="food_item" class="form-label">Food Item</label>
+                <select class="form-select" name="food_item" id="food_item">
+                    {% for food in all_foods %}
+                        <option value="{{ food.id }}">{{ food.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity (in servings)</label>
+                <input type="number" class="form-control" name="quantity" id="quantity" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="meal_type" class="form-label">Meal Type</label>
+                <select class="form-select" name="meal_type" id="meal_type">
+                    {% for meal in all_meal_types %}
+                        <option value="{{ meal.id }}">{{ meal.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add to Log</button>
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Today's Logs</h2>
+        <ul class="list-group">
+            {% for log in logs_today %}
+                <li class="list-group-item">
+                    {{ log.food_item.name }} - {{ log.quantity }} servings for {{ log.meal_type.name }}
+                    <span class="badge bg-primary rounded-pill">{{ log.food_item.calories|multiply:log.quantity }} kcal</span>
+                    <a href="{% url 'tracker:edit_log' log.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    <a href="{% url 'tracker:delete_log' log.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </li>
+            {% empty %}
+                <li class="list-group-item">No logs for today.</li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <h4>Total Calories Today: <span class="badge bg-success">{{ total_calories_today }} kcal</span></h4>
+    </div>
+</div>
+{% endblock %}
