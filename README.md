@@ -5,17 +5,34 @@ An intuitive and user-friendly web application to keep track of daily calorie in
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Technologies Used](#technologies-used)
-4. [Setup and Installation](#setup-and-installation)
-5. [Usage](#usage)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Contact](#contact)
+2. [Screenshots](#screenshots)
+3. [Features](#features)
+4. [Technologies Used](#technologies-used)
+5. [Setup and Installation](#setup-and-installation)
+6. [Usage](#usage)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Contact](#contact)
 
 ## Introduction
 
 Calorie Counter allows users to log their daily food items and calculates the total calorie intake, helping them manage and achieve their dietary goals.
+
+## Screenshots
+
+![image](https://github.com/divyesh1099/calorieCounter/assets/65925922/f2e20a75-3620-444c-9d2c-6fd650b5431b)
+
+![image](https://github.com/divyesh1099/calorieCounter/assets/65925922/42b40237-496e-4cb7-bc9f-1b72d6631b92)
+
+![image](https://github.com/divyesh1099/calorieCounter/assets/65925922/d699607e-f1af-4495-ab91-3d7787b04bf2)
+
+![image](https://github.com/divyesh1099/calorieCounter/assets/65925922/14e1bdf6-585f-4871-9d50-7a3c98455ae6)
+
+![image](https://github.com/divyesh1099/calorieCounter/assets/65925922/af95e13c-ba76-4de3-94dd-19e1db8ac7ce)
+
+![image](https://github.com/divyesh1099/calorieCounter/assets/65925922/94d0c6f2-978c-4d57-9645-837833341ac5)
+
+![image](https://github.com/divyesh1099/calorieCounter/assets/65925922/e8dfb2e2-5ad8-4d90-80d8-460984402f37)
 
 ## Features
 
@@ -23,14 +40,12 @@ Calorie Counter allows users to log their daily food items and calculates the to
 - **Food Database**: Extensive database to select foods and view their calorie values.
 - **Daily Intake Tracker**: Log and monitor your daily food items and the associated calorie count.
 - **Dynamic Updating**: Real-time updates of total calorie count based on food logs.
-- (Add any other features you have)
 
 ## Technologies Used
 
 - **Backend**: Django 4.2.4
-- **Database**: (Your DB technology, e.g., SQLite, PostgreSQL)
-- **Frontend**: (e.g., HTML, CSS, JavaScript, Bootstrap)
-- (Any other tech stack used)
+- **Database**: SQLite
+- **Frontend**: HTML, CSS, JavaScript, Bootstrap
 
 ## Setup and Installation
 
@@ -69,7 +84,6 @@ Visit `http://127.0.0.1:8000/` in your browser.
 
 1. **Registration**: First-time users need to register to create a personalized account.
 2. **Logging Food Items**: After logging in, navigate to the dashboard and add food items to track calorie intake.
-3. (Any other usage instructions)
 
 ## Contributing
 
@@ -81,4 +95,4 @@ This project is licensed under the MIT License. See [LICENSE.md](LICENSE.md) for
 
 ## Contact
 
-Created by [Your Name] - feel free to contact me at `your.email@example.com`!
+Created by [Divyesh Nandlal Vishwakarma](https://www.linkedin.com/in/divyesh-vishwakarma-621197175/) - feel free to contact me at [divyesh1099@gmail.com](mailto:divyesh1099@gmail.com)!
