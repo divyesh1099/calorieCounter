@@ -49,10 +49,10 @@
             {% endfor %}
         </ul>
         <hr>
-        <h4>Total Calories Today: <span class="badge bg-success">{{ total_calories_today }} kcal</span></h4>
-        <h4>Total Protein Today: <span class="badge bg-success">{{ total_protein_today }} g</span></h4>
-        <h4>Total Carbs Today: <span class="badge bg-success">{{ total_carbs_today }} g</span></h4>
-        <h4>Total Fats Today: <span class="badge bg-success">{{ total_fats_today }} g</span></h4>
+        <h4>Total Calories Today: <span class="badge bg-success">{{ total_calories_today|floatformat:2 }} kcal</span></h4>
+        <h4>Total Protein Today: <span class="badge bg-success">{{ total_protein_today|floatformat:2 }} g</span></h4>
+        <h4>Total Carbs Today: <span class="badge bg-success">{{ total_carbs_today|floatformat:2 }} g</span></h4>
+        <h4>Total Fats Today: <span class="badge bg-success">{{ total_fats_today|floatformat:2 }} g</span></h4>
 
     </div>
 </div>

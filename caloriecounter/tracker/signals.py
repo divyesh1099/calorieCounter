@@ -36,6 +36,9 @@ def update_daily_intake_and_profile(sender, instance, created, **kwargs):
         # Update the UserProfile's total_calories_consumed
         profile = UserProfile.objects.get(user=instance.user)
         profile.total_calories_consumed += instance.total_calories
+        profile.total_proteins_consumed += instance.total_protein
+        profile.total_carbs_consumed += instance.total_carbs
+        profile.total_fats_consumed += instance.total_fats
         profile.save()
 
         # Update UserDailyLog (creating if needed)
@@ -100,6 +103,9 @@ def remove_from_daily_intake_and_profile(sender, instance, **kwargs):
     # Update the UserProfile's total_calories_consumed
     profile = UserProfile.objects.get(user=instance.user)
     profile.total_calories_consumed -= instance.total_calories
+    profile.total_proteins_consumed -= instance.total_protein
+    profile.total_carbs_consumed -= instance.total_carbs
+    profile.total_fats_consumed -= instance.total_fats
     profile.save()
 
     # Update UserDailyLog

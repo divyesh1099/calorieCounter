@@ -10,11 +10,11 @@
         <div class="col-md-8">
             <h3>{{ user.username }}'s Profile</h3>
             <p><strong>Bio:</strong> {{ user.userprofile.bio }}</p>
-            <p><strong>Target Daily Calories:</strong> {{ user.userprofile.target_daily_calories }}</p>
-            <p><strong>Total Calories Consumed:</strong> {{ user.userprofile.total_calories_consumed }}</p>
-            <p><strong>Target Protein:</strong> {{ user.userprofile.target_protein }} grams</p>
-            <p><strong>Target Carbs:</strong> {{ user.userprofile.target_carbs }} grams</p>
-            <p><strong>Target Fat:</strong> {{ user.userprofile.target_fat }} grams</p>
+            <p><strong>Target Daily Calories:</strong> {{ user.userprofile.target_daily_calories|floatformat:2 }}</p>
+            <p><strong>Total Calories Consumed:</strong> {{ user.userprofile.total_calories_consumed|floatformat:2 }}</p>
+            <p><strong>Target Protein:</strong> {{ user.userprofile.target_protein|floatformat:2 }} grams</p>
+            <p><strong>Target Carbs:</strong> {{ user.userprofile.target_carbs|floatformat:2 }} grams</p>
+            <p><strong>Target Fat:</strong> {{ user.userprofile.target_fat|floatformat:2 }} grams</p>
             <p><strong>Joined Date:</strong> {{ user.userprofile.joined_date }}</p>
             <a href="{% url 'home:edit_profile' %}" class="btn btn-warning">Edit Profile</a>
             <a href="{% url 'home:delete_profile' %}" class="btn btn-danger">Delete Profile</a>
