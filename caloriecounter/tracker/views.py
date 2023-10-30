@@ -16,14 +16,19 @@ def index(request):
     if request.method == "POST":
         form = FoodLogForm(request.POST)
         if form.is_valid():
-            form.save()
+            food_log = form.save(commit=False)
+            food_log.user = request.user
+            food_log.save()
             return redirect('tracker')
 
     all_foods = FoodItem.objects.all()
     all_meal_types = MealType.objects.all()
-    logs_today = FoodLog.objects.filter(date_time_consumed=date.today())
+
+    today = date.today()
+    logs_today = FoodLog.objects.filter(user=request.user, date_time_consumed__date=today)
+    
     total_calories_today = sum([log.food_item.calories * log.quantity for log in logs_today])
-    print(date.today(), logs_today)
+
     context = {
         'all_foods': all_foods,
         'all_meal_types': all_meal_types,
