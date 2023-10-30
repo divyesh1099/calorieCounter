@@ -3,7 +3,7 @@ from django.db import models
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True, default='default_profile_picture.png')
     bio = models.TextField(blank=True)
     target_daily_calories = models.PositiveIntegerField(default=2400)  # User's target calorie intake per day
     total_calories_consumed = models.PositiveIntegerField(default=0)  # Total Calories Consumed Today

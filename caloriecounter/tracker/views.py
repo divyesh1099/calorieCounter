@@ -27,7 +27,7 @@ def index(request):
     today = date.today()
     logs_today = FoodLog.objects.filter(user=request.user, date_time_consumed__date=today)
     
-    total_calories_today = sum([log.food_item.calories * log.quantity for log in logs_today])
+    total_calories_today = sum([(log.food_item.calories or 0) * (log.quantity or 0) for log in logs_today])
     total_protein_today = sum([log.total_protein for log in logs_today])
     total_carbs_today = sum([log.total_carbs for log in logs_today])
     total_fats_today = sum([log.total_fats for log in logs_today])

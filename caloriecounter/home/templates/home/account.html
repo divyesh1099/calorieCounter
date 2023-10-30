@@ -5,7 +5,11 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-4">
-            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="img-thumbnail">
+            {% if user.userprofile.profile_picture %}
+                <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="img-thumbnail">
+            {% else %}
+                <img src="{% static 'default_profile_picture.png' %}" alt="Default Profile Picture" class="img-thumbnail">
+            {% endif %}
         </div>
         <div class="col-md-8">
             <h3>{{ user.username }}'s Profile</h3>
