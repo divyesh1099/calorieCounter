@@ -1,0 +1,57 @@
+{% extends "home/layout.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <!-- Page Header -->
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Comparison Reports</h1>
+        </div>
+    </div>
+
+    <!-- Comparison Reports Table -->
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Change in Calories</th>
+                        <th>Change in Proteins</th>
+                        <th>Change in Carbs</th>
+                        <th>Change in Fats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in comparison_reports %}
+                        <tr>
+                            <td>{{ report.start_month }}/{{ report.start_year }}</td>
+                            <td>{{ report.end_month }}/{{ report.end_year }}</td>
+                            <td>{{ report.change_in_calories }}</td>
+                            <td>{{ report.change_in_proteins }}</td>
+                            <td>{{ report.change_in_carbs }}</td>
+                            <td>{{ report.change_in_fats }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- If there are no reports, display a message -->
+    {% if not comparison_reports %}
+        <div class="row mt-4">
+            <div class="col">
+                <div class="alert alert-info" role="alert">
+                    No comparison reports available.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

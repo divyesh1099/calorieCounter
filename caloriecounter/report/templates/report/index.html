@@ -1,5 +1,40 @@
 {% extends "home/layout.html" %}
 
+{% load static %}
+
+{% block head %}
+    <!-- Add any head-specific content or links here -->
+    <link href="{% static 'css/reports.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-    <h1>Report</h1>
+<div class="container mt-4">
+    <h1 class="display-4 text-center">Reports Dashboard</h1>
+    <hr>
+
+    <!-- Monthly Reports Section -->
+    <section id="monthly-reports" class="my-5">
+        <h2 class="text-center">Monthly Reports</h2>
+        <div class="text-center">
+            <a href="{% url 'report:monthly_reports' %}" class="btn btn-primary btn-lg mt-2">View Monthly Reports</a>
+        </div>
+    </section>
+
+    <!-- Goal Achievement Reports Section -->
+    <section id="goal-achievement-reports" class="my-5">
+        <h2 class="text-center">Goal Achievement Reports</h2>
+        <div class="text-center">
+            <a href="{% url 'report:goal_achievement_reports' %}" class="btn btn-success btn-lg mt-2">View Goal Achievement Reports</a>
+        </div>
+    </section>
+
+    <!-- Comparison Reports Section -->
+    <section id="comparison-reports" class="my-5">
+        <h2 class="text-center">Comparison Reports</h2>
+        <div class="text-center">
+            <a href="{% url 'report:comparison_reports' %}" class="btn btn-warning btn-lg mt-2">View Comparison Reports</a>
+        </div>
+    </section>
+
+</div>
 {% endblock %}

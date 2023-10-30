@@ -28,8 +28,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'recipe:index' %}">Recipes</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'report:index' %}">Reports</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reports
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'report:monthly_reports' %}">Monthly Reports</a></li>
+                            <li><a class="dropdown-item" href="{% url 'report:goal_achievement_reports' %}">Goal Achievement Reports</a></li>
+                            <li><a class="dropdown-item" href="{% url 'report:comparison_reports' %}">Comparison Reports</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'tracker:index' %}">Tracker</a>

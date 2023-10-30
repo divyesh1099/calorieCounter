@@ -1,0 +1,61 @@
+{% extends "home/layout.html" %}
+
+{% load report_filters %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <!-- Page Header -->
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Goal Achievement Reports</h1>
+        </div>
+    </div>
+
+    <!-- Goal Achievement Reports Table -->
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Month/Year</th>
+                        <th>Goal Type</th>
+                        <th>Goal Value</th>
+                        <th>Achieved Value</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in goal_reports %}
+                        <tr>
+                            <td>{{ report.month }}/{{ report.year }}</td>
+                            <td>{{ report.goal_type }}</td>
+                            <td>{{ report.goal_value }}</td>
+                            <td>{{ report.achieved_value }}</td>
+                            <td>
+                                <div class="progress">
+                                    {% with progress=report.achieved_value|dividedby:report.goal_value|floatformat:"0"|multiply:"100" %}
+                                    <div class="progress-bar" role="progressbar" style="width: {{ progress }}%;" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">{{ progress }}%</div>
+                                    {% endwith %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- If there are no reports, display a message -->
+            {% if not goal_reports %}
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="alert alert-info" role="alert">
+                        No goal reports available.
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

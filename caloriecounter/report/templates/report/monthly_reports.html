@@ -1,0 +1,56 @@
+{% extends "home/layout.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <!-- Page Header -->
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Monthly Reports</h1>
+        </div>
+    </div>
+
+    <!-- Monthly Reports Table -->
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Month/Year</th>
+                        <th>Average Calories</th>
+                        <th>Highest Cal. Day</th>
+                        <th>Lowest Cal. Day</th>
+                        <th>Avg. Proteins</th>
+                        <th>Avg. Carbs</th>
+                        <th>Avg. Fats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in monthly_reports %}
+                        <tr>
+                            <td>{{ report.month }}/{{ report.year }}</td>
+                            <td>{{ report.average_calories }}</td>
+                            <td>{{ report.highest_calories_day }}</td>
+                            <td>{{ report.lowest_calories_day }}</td>
+                            <td>{{ report.average_proteins }}</td>
+                            <td>{{ report.average_carbs }}</td>
+                            <td>{{ report.average_fats }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- If there are no reports, display a message -->
+            {% if not monthly_reports %}
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="alert alert-info" role="alert">
+                        No goal reports available.
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
