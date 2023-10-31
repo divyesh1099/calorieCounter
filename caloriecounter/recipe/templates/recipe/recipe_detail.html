@@ -1,0 +1,38 @@
+{% extends "home/layout.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1 class="mb-4">{{ recipe.name }}</h1>
+
+    {% if recipe.image %}
+        <div class="mb-4">
+            <img src="{{ recipe.image.url }}" class="img-fluid" alt="{{ recipe.name }}">
+        </div>
+    {% endif %}
+    
+    <p>
+        <strong>Author:</strong> {{ recipe.author.username }}<br>
+        <strong>Preparation Time:</strong> {{ recipe.preparation_time }}<br>
+        <strong>Serves:</strong> {{ recipe.serves }}<br>
+        <strong>Calories:</strong> {{ recipe.total_calories }}
+    </p>
+
+    <h2 class="mt-4">Instructions:</h2>
+    <p>{{ recipe.instructions }}</p>
+
+    <h2 class="mt-4">Ingredients:</h2>
+    <ul>
+        {% for ingredient in recipe.recipeingredient_set.all %}
+            <li>
+                {{ ingredient.ingredient.name }} - {{ ingredient.quantity_in_grams }}g ({{ ingredient.calories }} calories)
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Optional: Comments section can be added here if needed -->
+
+    <a href="{% url 'recipe:index' %}" class="btn btn-primary mt-4">Back to All Recipes</a>
+</div>
+
+{% endblock %}

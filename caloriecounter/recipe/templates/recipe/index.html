@@ -1,5 +1,29 @@
 {% extends "home/layout.html" %}
 
 {% block content %}
-    <h1>Recipe</h1>
+<div class="container mt-4">
+    <h1 class="mb-4">All Recipes</h1>
+    
+    <div class="row">
+        {% for recipe in recipes %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    {% if recipe.image %}
+                        <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.name }}</h5>
+                        <p class="card-text">
+                            <strong>Author:</strong> {{ recipe.author.username }}<br>
+                            <strong>Serves:</strong> {{ recipe.serves }}<br>
+                            <strong>Calories:</strong> {{ recipe.total_calories }}
+                        </p>
+                        <a href="{% url 'recipe:recipe_detail' recipe.id %}" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock %}
